@@ -1,4 +1,4 @@
-package rest
+package rest_api
 
 import (
 	"encoding/json"
@@ -34,7 +34,7 @@ func (r *usersRepository) Login(email string, password string) (*users.User, *er
 
 	response := usersRestClient.Post("/users/login", request)
 	if response == nil || response.Response == nil {
-		return nil, errors.NewInternalServerError("invalid rest client response when trying to login user")
+		return nil, errors.NewInternalServerError("invalid rest_api client response when trying to login user")
 	}
 
 	if response.StatusCode > 299 {

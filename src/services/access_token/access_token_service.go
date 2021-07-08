@@ -3,7 +3,7 @@ package access_token
 import (
 	"github.com/nicoletafratila/bookstore_oauth-api/src/domain/access_token"
 	"github.com/nicoletafratila/bookstore_oauth-api/src/repository/db"
-	"github.com/nicoletafratila/bookstore_oauth-api/src/repository/rest"
+	"github.com/nicoletafratila/bookstore_oauth-api/src/repository/rest_api"
 	"github.com/nicoletafratila/bookstore_oauth-api/src/utils/errors"
 	"strings"
 )
@@ -22,11 +22,11 @@ type Service interface {
 }
 
 type service struct {
-	restRepository rest.RestUsersRepository
+	restRepository rest_api.RestUsersRepository
 	dbRepository   db.DbRepository
 }
 
-func NewService(restRepo rest.RestUsersRepository, dbRepo db.DbRepository) Service {
+func NewService(restRepo rest_api.RestUsersRepository, dbRepo db.DbRepository) Service {
 	return &service{
 		restRepository: restRepo,
 		dbRepository:   dbRepo,

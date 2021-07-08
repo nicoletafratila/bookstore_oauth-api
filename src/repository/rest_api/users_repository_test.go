@@ -1,4 +1,4 @@
-package rest
+package rest_api
 
 import (
 	"github.com/mercadolibre/golang-restclient/rest"
@@ -29,7 +29,7 @@ func TestLoginUserTimeoutFromAPI(t *testing.T) {
 	assert.Nil(t, user)
 	assert.NotNil(t, err)
 	assert.EqualValues(t, http.StatusInternalServerError, err.Status)
-	assert.EqualValues(t, "invalid rest client response when trying to login user", err.Message)
+	assert.EqualValues(t, "invalid rest_api client response when trying to login user", err.Message)
 }
 
 func TestLoginUserInvalidErrorInterface(t *testing.T) {
