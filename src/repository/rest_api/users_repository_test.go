@@ -24,7 +24,7 @@ func TestLoginUserTimeoutFromAPI(t *testing.T) {
 	})
 	repository := usersRepository{}
 
-	user, err := repository.LoginUser("email@test.com", "the-password")
+	user, err := repository.Login("email@test.com", "the-password")
 
 	assert.Nil(t, user)
 	assert.NotNil(t, err)
@@ -43,7 +43,7 @@ func TestLoginUserInvalidErrorInterface(t *testing.T) {
 	})
 	repository := usersRepository{}
 
-	user, err := repository.LoginUser("email@test.com", "the-password")
+	user, err := repository.Login("email@test.com", "the-password")
 
 	assert.Nil(t, user)
 	assert.NotNil(t, err)
@@ -62,7 +62,7 @@ func TestLoginUserInvalidLoginCredentials(t *testing.T) {
 	})
 	repository := usersRepository{}
 
-	user, err := repository.LoginUser("email@test.com", "the-password")
+	user, err := repository.Login("email@test.com", "the-password")
 
 	assert.Nil(t, user)
 	assert.NotNil(t, err)
@@ -81,7 +81,7 @@ func TestLoginUserInvalidUserJsonResponse(t *testing.T) {
 	})
 	repository := usersRepository{}
 
-	user, err := repository.LoginUser("test@test.com", "the-password")
+	user, err := repository.Login("test@test.com", "the-password")
 
 	assert.Nil(t, user)
 	assert.NotNil(t, err)
@@ -100,7 +100,7 @@ func TestLoginUserNoError(t *testing.T) {
 	})
 	repository := usersRepository{}
 
-	user, err := repository.LoginUser("test@test.com", "the-password")
+	user, err := repository.Login("test@test.com", "the-password")
 
 	assert.Nil(t, err)
 	assert.NotNil(t, user)
