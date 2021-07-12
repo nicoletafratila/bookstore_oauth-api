@@ -9,6 +9,7 @@ import (
 )
 
 func TestMain(m *testing.M) {
+	//flag.Bool("mock", true, "")
 	rest.StartMockupServer()
 	os.Exit(m.Run())
 }
