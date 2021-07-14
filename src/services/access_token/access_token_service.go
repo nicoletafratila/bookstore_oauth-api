@@ -1,4 +1,4 @@
-package access_token
+package services
 
 import (
 	"github.com/nicoletafratila/bookstore_oauth-api/src/domain/access_token"

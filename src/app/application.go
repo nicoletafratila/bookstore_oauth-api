@@ -14,7 +14,7 @@ var (
 
 func StartApplication() {
 	atHandler := http.NewAccessTokenHandler(
-		access_token.NewService(rest_api.NewRepository(), db.NewRepository()))
+		services.NewService(rest_api.NewRepository(), db.NewRepository()))
 
 	router.GET("oauth/access_token/:access_token_id", atHandler.GetById)
 	router.POST("oauth/access_token/", atHandler.Create)

@@ -3,7 +3,7 @@ package http
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/nicoletafratila/bookstore_oauth-api/src/domain/access_token"
-	accessTokenServices "github.com/nicoletafratila/bookstore_oauth-api/src/services/access_token"
+	"github.com/nicoletafratila/bookstore_oauth-api/src/services/access_token"
 	"github.com/nicoletafratila/bookstore_utils-go/rest_errors"
 	"net/http"
 )
@@ -11,14 +11,13 @@ import (
 type AccessTokenHandler interface {
 	GetById(*gin.Context)
 	Create(*gin.Context)
-	//CreateAccessToken(*gin.Context)
 }
 
 type accessTokenHandler struct {
-	service accessTokenServices.Service
+	service services.Service
 }
 
-func NewAccessTokenHandler(service accessTokenServices.Service) AccessTokenHandler {
+func NewAccessTokenHandler(service services.Service) AccessTokenHandler {
 	return &accessTokenHandler{
 		service: service,
 	}
