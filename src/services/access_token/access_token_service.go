@@ -9,9 +9,9 @@ import (
 )
 
 type Service interface {
-	GetById(string) (*access_token.AccessToken, *rest_errors.RestErr)
-	Create(access_token.AccessTokenRequest) (*access_token.AccessToken, *rest_errors.RestErr)
-	UpdateExpirationTime(access_token.AccessToken) *rest_errors.RestErr
+	GetById(string) (*access_token.AccessToken, rest_errors.RestErr)
+	Create(access_token.AccessTokenRequest) (*access_token.AccessToken, rest_errors.RestErr)
+	UpdateExpirationTime(access_token.AccessToken) rest_errors.RestErr
 }
 
 type service struct {
@@ -26,7 +26,7 @@ func NewService(restRepo rest_api.RestUsersRepository, dbRepo db.DbRepository) S
 	}
 }
 
-func (s *service) GetById(accessTokenId string) (*access_token.AccessToken, *rest_errors.RestErr) {
+func (s *service) GetById(accessTokenId string) (*access_token.AccessToken, rest_errors.RestErr) {
 	accessTokenId = strings.TrimSpace(accessTokenId)
 	if len(accessTokenId) == 0 {
 		return nil, rest_errors.NewBadRequestError("invalid access token id")
@@ -38,7 +38,7 @@ func (s *service) GetById(accessTokenId string) (*access_token.AccessToken, *res
 	return accessToken, nil
 }
 
-func (s *service) Create(request access_token.AccessTokenRequest) (*access_token.AccessToken, *rest_errors.RestErr) {
+func (s *service) Create(request access_token.AccessTokenRequest) (*access_token.AccessToken, rest_errors.RestErr) {
 	if err := request.Validate(); err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func (s *service) Create(request access_token.AccessTokenRequest) (*access_token
 	return &at, nil
 }
 
-func (s *service) UpdateExpirationTime(at access_token.AccessToken) *rest_errors.RestErr {
+func (s *service) UpdateExpirationTime(at access_token.AccessToken) rest_errors.RestErr {
 	if err := at.Validate(); err != nil {
 		return err
 	}

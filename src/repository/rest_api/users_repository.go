@@ -21,13 +21,13 @@ func NewRepository() RestUsersRepository {
 }
 
 type RestUsersRepository interface {
-	Login(string, string) (*users.User, *rest_errors.RestErr)
+	Login(string, string) (*users.User, rest_errors.RestErr)
 }
 
 type usersRepository struct {
 }
 
-func (r *usersRepository) Login(email string, password string) (*users.User, *rest_errors.RestErr) {
+func (r *usersRepository) Login(email string, password string) (*users.User, rest_errors.RestErr) {
 	request := users.UserLoginRequest{
 		Email:    email,
 		Password: password,
@@ -44,7 +44,7 @@ func (r *usersRepository) Login(email string, password string) (*users.User, *re
 		if err != nil {
 			return nil, rest_errors.NewInternalServerError("invalid error interface when trying to login user", errors.New("database error"))
 		}
-		return nil, &restErr
+		return nil, restErr
 	}
 
 	var user users.User
