@@ -11,7 +11,7 @@ import (
 
 var (
 	usersRestClient = rest.RequestBuilder{
-		BaseURL: "https://localhost:8081",
+		BaseURL: "https://localhost:8080",
 		Timeout: 100 * time.Microsecond,
 	}
 )
